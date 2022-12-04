@@ -6,8 +6,12 @@
 #define TAPPING_TERM 100
 #define ENCODER_DIRECTION_FLIP
 
+#define FORCE_NKRO
+#define NO_ACTION_ONESHOT
+
 #ifdef OLED_ENABLE
-#    define OLED_TIMEOUT 30000
+#    define OLED_TIMEOUT 60000
+#    define SPLIT_OLED_ENABLE
 #endif
 
 #define RGB_DI_PIN D3
@@ -21,22 +25,14 @@
 #    define RGBLIGHT_SLEEP
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
 // #define DRIVER_LED_TOTAL 72
+#    define SPLIT_ST7565_ENABLE
 
-#    define RGBLIGHT_ANIMATIONS
 #    define RGBLIGHT_LIMIT_VAL 150
 #    define RGBLIGHT_HUE_STEP 10
 #    define RGBLIGHT_SAT_STEP 17
 #    define RGBLIGHT_VAL_STEP 17
 
-// disable unused modes
-#    undef RGBLIGHT_EFFECT_STATIC_GRADIENT
-#    undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    undef RGBLIGHT_EFFECT_ALTERNATING
-#    undef RGBLIGHT_EFFECT_BREATHING
-#    undef RGBLIGHT_EFFECT_CHRISTMAS
-#    undef RGBLIGHT_EFFECT_RAINBOW_MOOD
-#    undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    undef RGBLIGHT_EFFECT_SNAKE
+// enable rgb modes
 
 #    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
 #endif
