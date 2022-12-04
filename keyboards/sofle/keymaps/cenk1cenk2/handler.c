@@ -48,8 +48,8 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
 #endif
 #ifdef OLED_ENABLE
             oled_set_brightness(0);
-            oled_clear();
-            oled_off();
+            // oled_clear();
+            // oled_off();
 #endif
             break;
     }
