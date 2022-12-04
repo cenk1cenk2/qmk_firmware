@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "layers.h"
-#include "rgb.h"
 
 enum my_keycodes { KC_QWERTY = SAFE_RANGE, KC_LOWER, KC_RAISE, KC_ADJUST, KC_PRVWD, KC_NXTWD, KC_LSTRT, KC_LEND, KC_DLINE };
 
@@ -28,6 +27,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             }
             break;
+        case _RAISE:
         case _LOWER:
             if (index == 0) {
                 if (clockwise) {
@@ -50,12 +50,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 #endif
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-
-    return state;
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
             // custom layers
@@ -63,46 +57,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
             }
-
             return false;
         case KC_LOWER:
             if (record->event.pressed) {
                 layer_on(_LOWER);
-
-                rgblight_sethsv_range(HSV_BLUE, SET_UNDERGLOW_RANGE_LEFT);
-                rgblight_sethsv_range(HSV_BLUE, SET_UNDERGLOW_RANGE_RIGHT);
             } else {
                 layer_off(_LOWER);
-
-                rgblight_reload_from_eeprom();
             }
-
             return false;
         case KC_RAISE:
             if (record->event.pressed) {
                 layer_on(_RAISE);
-
-                rgblight_sethsv_range(HSV_RED, SET_UNDERGLOW_RANGE_LEFT);
-                rgblight_sethsv_range(HSV_RED, SET_UNDERGLOW_RANGE_RIGHT);
             } else {
                 layer_off(_RAISE);
-
-                rgblight_reload_from_eeprom();
             }
-
             return false;
         case KC_ADJUST:
             if (record->event.pressed) {
                 layer_on(_ADJUST);
-
-                rgblight_sethsv_range(HSV_ORANGE, SET_UNDERGLOW_RANGE_LEFT);
-                rgblight_sethsv_range(HSV_ORANGE, SET_UNDERGLOW_RANGE_RIGHT);
             } else {
                 layer_off(_ADJUST);
-
-                rgblight_reload_from_eeprom();
             }
-
             return false;
 
             // custom keycodes

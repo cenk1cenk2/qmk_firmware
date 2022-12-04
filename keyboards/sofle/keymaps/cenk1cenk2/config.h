@@ -2,6 +2,13 @@
 
 #define EE_HANDS
 
+#ifndef NO_DEBUG
+#    define NO_DEBUG
+#endif // !NO_DEBUG
+#if !defined(NO_PRINT) && !defined(CONSOLE_ENABLE)
+#    define NO_PRINT
+#endif // !NO_PRINT
+
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
 #define ENCODER_DIRECTION_FLIP
@@ -10,6 +17,10 @@
 #define NO_ACTION_FUNCTION
 #define NO_ACTION_ONESHOT
 #define DISABLE_LEADER
+#define AUTO_SHIFT_TIMEOUT 250
+#define AUTO_SHIFT_REPEAT
+#define NO_AUTO_SHIFT_ALPHA
+#define NO_AUTO_SHIFT_NUMERIC
 
 #define FORCE_NKRO
 
@@ -38,5 +49,7 @@
 
 #    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
 
+#    define RGBLIGHT_LAYERS
+#    define RGBLIGHT_LAYERS_RETAIN_VAL
 #    define SPLIT_LAYER_STATE_ENABLE
 #endif

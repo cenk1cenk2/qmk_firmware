@@ -1,2 +1,6 @@
-#define SET_UNDERGLOW_RANGE_LEFT 0, 6
-#define SET_UNDERGLOW_RANGE_RIGHT 36, 42
+#ifdef RGBLIGHT_LAYERS
+
+#    define SET_UNDERGLOW(hsv) \
+        {0, 6, hsv}, { 36, 6, hsv }
+
+#endif
