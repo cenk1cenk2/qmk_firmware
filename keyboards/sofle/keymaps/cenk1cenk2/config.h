@@ -29,15 +29,12 @@
         { 36, 36 }
 #    define RGBLIGHT_DEFAULT_HUE 120
 #    define RGBLIGHT_SLEEP
-#    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-// #define DRIVER_LED_TOTAL 72
+#    define RGB_DISABLE_WHEN_USB_SUSPENDED
 
 #    define RGBLIGHT_LIMIT_VAL 150
 #    define RGBLIGHT_HUE_STEP 10
 #    define RGBLIGHT_SAT_STEP 17
 #    define RGBLIGHT_VAL_STEP 17
-
-// enable rgb modes
 
 #    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
 

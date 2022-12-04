@@ -25,6 +25,7 @@ void suspend_power_down_user(void) {
     rgblight_disable();
 #endif
 #ifdef OLED_ENABLE
+    oled_clear();
     oled_off();
 #endif
 
@@ -46,6 +47,7 @@ void user_sync_a_slave_handler(uint8_t in_buflen, const void *in_data, uint8_t o
         rgblight_disable();
 #endif
 #ifdef OLED_ENABLE
+        oled_clear();
         oled_off();
 #endif
     } else {
