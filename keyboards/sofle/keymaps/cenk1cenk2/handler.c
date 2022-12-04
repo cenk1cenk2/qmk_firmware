@@ -56,35 +56,6 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
     }
 }
 
-#ifdef RGBLIGHT_LAYERS
-
-const rgblight_segment_t PROGMEM rgb_layer_lower[]  = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_GOLD));
-const rgblight_segment_t PROGMEM rgb_layer_raise[]  = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_CYAN));
-const rgblight_segment_t PROGMEM rgb_layer_adjust[] = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_RED));
-
-const rgblight_segment_t *const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(rgb_layer_lower, rgb_layer_raise, rgb_layer_adjust);
-
-#endif
-
 void keyboard_post_init_user(void) {
     transaction_register_rpc(USER_SYNC_SLEEP_STATE, user_sync_sleep_state_slave_handler);
-
-#ifdef RGBLIGHT_LAYERS
-    rgblight_layers = my_rgb_layers;
-#endif
 }
-
-#ifdef RGBLIGHT_LAYERS
-// layer_state_t default_layer_state_set_user(layer_state_t state) {
-//     return state;
-// }
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _LOWER));
-    rgblight_set_layer_state(1, layer_state_cmp(state, _RAISE));
-    rgblight_set_layer_state(2, layer_state_cmp(state, _ADJUST));
-
-    return state;
-}
-
-#endif
