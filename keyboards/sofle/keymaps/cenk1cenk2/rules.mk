@@ -14,5 +14,4 @@ NKRO_ENABLE = yes
 VIA_ENABLE = yes
 
 SRC +=  ./oled.c \
-        ./handler.c \
-        ./rgb.c
+        ./handler.c

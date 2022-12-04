@@ -40,4 +40,6 @@
 
 // #    define RGBLIGHT_LAYERS
 // #    define RGBLIGHT_MAX_LAYERS 4
+// #    define RGBLIGHT_LAYERS_RETAIN_VAL
+// #    define SPLIT_LAYER_STATE_ENABLE
 #endif
