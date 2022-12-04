@@ -6,8 +6,14 @@
 #define TAPPING_TERM 100
 #define ENCODER_DIRECTION_FLIP
 
-#define FORCE_NKRO
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
 #define NO_ACTION_ONESHOT
+#define DISABLE_LEADER
+
+#define FORCE_NKRO
+
+#define SPLIT_TRANSACTION_IDS_USER USER_SYNC_A
 
 #ifdef OLED_ENABLE
 #    define OLED_TIMEOUT 60000
@@ -25,7 +31,6 @@
 #    define RGBLIGHT_SLEEP
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
 // #define DRIVER_LED_TOTAL 72
-#    define SPLIT_ST7565_ENABLE
 
 #    define RGBLIGHT_LIMIT_VAL 150
 #    define RGBLIGHT_HUE_STEP 10
@@ -35,4 +40,7 @@
 // enable rgb modes
 
 #    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_STATIC_LIGHT
+
+// #    define RGBLIGHT_LAYERS
+// #    define RGBLIGHT_MAX_LAYERS 4
 #endif

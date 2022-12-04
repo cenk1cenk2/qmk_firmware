@@ -1,12 +1,5 @@
 #include QMK_KEYBOARD_H
-
-enum sofle_layers {
-    /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
-    _QWERTY,
-    _LOWER,
-    _RAISE,
-    _ADJUST,
-};
+#include "layers.h"
 
 enum my_keycodes { KC_QWERTY = SAFE_RANGE, KC_LOWER, KC_RAISE, KC_ADJUST, KC_PRVWD, KC_NXTWD, KC_LSTRT, KC_LEND, KC_DLINE };
 
@@ -15,80 +8,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[_QWERTY] = LAYOUT
                                                               [_RAISE]  = LAYOUT(KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_PSCR, KC_PGUP, KC_PRVWD, KC_UP, KC_NXTWD, KC_DLINE, KC_DEL, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_ENT, KC_TRNS, KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_LSTRT, KC_NO, KC_LEND, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
                                                               [_ADJUST] = LAYOUT(QK_REBOOT, KC_NO, KC_NO, KC_NO, RGB_RMOD, RGB_MOD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_CAPS, KC_INS, KC_SCRL, CG_TOGG, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_HUI, RGB_SAI, RGB_VAI, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_HUD, RGB_SAD, RGB_VAD, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_MPRV, KC_MPLY, KC_MNXT, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)};
 
-#ifdef OLED_ENABLE
+#ifdef ENCODER_ENABLE
 
-static void render_logo(void) {
-    static const char PROGMEM raw_logo[] = {
-        0,   0,   0,   0,  0,  0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,  0,  0,   0,   0,   0,   0,   0,   0,   0,   0,  0,  0,   0,   0,   0,   0,   0,  0, 0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0,   0,   0,   0,   0, 0, 0, 0, 0,   0,   0,   0,   0, 0, 0, 0,   0,   0, 0, 0, 0, 0,  0,  0,  0,   0,   0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0,   0,   0,  0,  0,   0,   0,  0,   0,  0,  0,  0,   0,   0,   0,   0,  0,   0,   0,   0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0,   0,   248, 252, 142, 135, 3,  3,   123, 127, 14,  0,   0,   0,   128, 128, 128, 128, 0,  0,   128, 224, 248, 124, 118, 31,  15,  195, 240, 252, 238, 63,  15,  128, 128, 128, 128,
-        128, 0,   0,   0,  0,  0,   0,   24,  60,  142, 243, 255, 239, 96, 48,  56, 28, 15,  7,   0,   128, 128, 128, 128, 128, 0,  0,  0,   0,   0,   0,   0,   0,  0, 192, 240, 252, 254, 63, 15, 0, 0, 0, 0, 128, 128, 128, 128, 0, 0, 0, 0, 128, 128, 128, 128, 0, 0, 0, 128, 192, 0, 0, 0, 0, 0,  0,  0,  128, 128, 128, 128, 224, 252, 62, 15, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48, 248, 252, 132, 129, 131, 131, 135, 207, 254, 124, 96, 252, 254, 198, 255, 121, 63, 55, 248, 252, 31, 255, 24, 24, 24, 120, 255, 223, 195, 97, 120, 252, 255, 223, 205, 207, 103, 51, 24, 0, 0, 0, 0, 128, 224, 252, 63,  7,   15,  28, 120, 240, 224, 192, 240, 252, 255, 223, 205, 207, 103, 51, 124, 127, 103, 240, 248, 254, 222, 120, 255, 255, 131, 223, 246, 126, 60,  112, 252, 254,
-        198, 255, 121, 63, 55, 248, 252, 222, 199, 99,  249, 253, 223, 99, 112, 28, 15, 251, 255, 222, 192, 240, 252, 254, 199, 99, 49, 253, 255, 199, 192, 112, 24, 0, 0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0,   0,   0,   0,   0, 1, 1, 1, 1,   1,   1,   1,   0, 0, 0, 0,   0,   0, 0, 0, 0, 31, 31, 27, 15,  7,   0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1,   1,   0,   0,   0,   0,   0,   0,   0,   1,   1,  1,   0,   0,   0,   0,   0,  0,  28,  30,  26, 31,  15, 3,  0,  0,   0,   1,   1,   1,  1,   0,   0,   0,   0,   0,   0,   0,  0,  0, 0, 0, 0, 0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
-    };
-
-    oled_write_raw_P(raw_logo, sizeof(raw_logo));
-}
-
-static void print_status_narrow(void) {
-    // Print current mode
-    oled_write_P(PSTR("\n\n"), false);
-    oled_write_ln_P(PSTR("MODE"), false);
-    oled_write_ln_P(PSTR(""), false);
-    if (keymap_config.swap_lctl_lgui) {
-        oled_write_ln_P(PSTR("MAC"), false);
-    } else {
-        oled_write_ln_P(PSTR("WIN"), false);
-    }
-
-    oled_write_P(PSTR("\n\n"), false);
-    // Print current layer
-    oled_write_ln_P(PSTR("LAYER"), false);
-    switch (get_highest_layer(layer_state)) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Norm"), false);
-            break;
-        case _RAISE:
-            oled_write_P(PSTR("Raise"), false);
+            if (index == 0) {
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+            } else if (index == 1) {
+                if (clockwise) {
+                    tap_code(KC_MS_WH_DOWN);
+                } else {
+                    tap_code(KC_MS_WH_UP);
+                }
+            }
             break;
         case _LOWER:
-            oled_write_P(PSTR("Lower"), false);
+            if (index == 0) {
+                if (clockwise) {
+                    tap_code(KC_MPRV);
+                } else {
+                    tap_code(KC_MNXT);
+                }
+            } else if (index == 1) {
+                if (clockwise) {
+                    tap_code(KC_MS_WH_LEFT);
+                } else {
+                    tap_code(KC_MS_WH_RIGHT);
+                }
+            }
             break;
-        case _ADJUST:
-            oled_write_P(PSTR("Adj"), false);
-            break;
-        default:
-            oled_write_ln_P(PSTR("Undef"), false);
-    }
-
-    oled_write_P(PSTR("\n\n"), false);
-    led_t led_usb_state = host_keyboard_led_state();
-    oled_write_ln_P(PSTR("CPSLK"), led_usb_state.caps_lock);
-}
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    }
-
-    return OLED_ROTATION_180;
-}
-
-bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        print_status_narrow();
-    } else {
-        render_logo();
     }
 
     return false;
-}
-
-void suspend_power_down_user(void) {
-    oled_off();
-    rgblight_disable();
-}
-
-void suspend_wakeup_init_user(void) {
-    oled_on();
-    rgblight_enable();
 }
 
 #endif
@@ -100,6 +56,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_QWERTY);
             }
+
             return false;
         case KC_LOWER:
             if (record->event.pressed) {
@@ -214,44 +171,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
-#ifdef ENCODER_ENABLE
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-    switch (get_highest_layer(layer_state | default_layer_state)) {
-        case _QWERTY:
-            if (index == 0) {
-                if (clockwise) {
-                    tap_code(KC_VOLU);
-                } else {
-                    tap_code(KC_VOLD);
-                }
-            } else if (index == 1) {
-                if (clockwise) {
-                    tap_code(KC_MS_WH_DOWN);
-                } else {
-                    tap_code(KC_MS_WH_UP);
-                }
-            }
-            break;
-        case _LOWER:
-            if (index == 0) {
-                if (clockwise) {
-                    tap_code(KC_MPRV);
-                } else {
-                    tap_code(KC_MNXT);
-                }
-            } else if (index == 1) {
-                if (clockwise) {
-                    tap_code(KC_MS_WH_LEFT);
-                } else {
-                    tap_code(KC_MS_WH_RIGHT);
-                }
-            }
-            break;
-    }
-
-    return false;
-}
-
-#endif
