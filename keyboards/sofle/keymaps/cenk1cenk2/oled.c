@@ -1,5 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "layers.h"
+#include "handler.h"
+
+extern bool power;
 
 #ifdef OLED_ENABLE
 
@@ -54,10 +57,16 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 bool oled_task_user(void) {
+    if (!power) {
+        return false;
+    }
+
     if (is_keyboard_master()) {
         print_status_narrow();
     } else {
         render_logo();
+        oled_scroll_left();
+        oled_scroll_set_speed(5);
     }
 
     return false;
