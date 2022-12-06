@@ -37,7 +37,7 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
     switch (m2s->power) {
         case true:
 #ifdef RGBLIGHT_ENABLE
-            rgblight_enable();
+            rgblight_enable_noeeprom();
 #endif
 #ifdef OLED_ENABLE
             oled_set_brightness(255);
@@ -61,7 +61,7 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
 
 const rgblight_segment_t PROGMEM rgb_layer_default[] = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_WHITE));
 const rgblight_segment_t PROGMEM rgb_layer_lower[]   = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_CYAN));
-const rgblight_segment_t PROGMEM rgb_layer_raise[]   = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_YELLOW));
+const rgblight_segment_t PROGMEM rgb_layer_raise[]   = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_GOLD));
 const rgblight_segment_t PROGMEM rgb_layer_adjust[]  = RGBLIGHT_LAYER_SEGMENTS(SET_UNDERGLOW(HSV_RED));
 
 const rgblight_segment_t *const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(rgb_layer_default, rgb_layer_lower, rgb_layer_raise, rgb_layer_adjust);
