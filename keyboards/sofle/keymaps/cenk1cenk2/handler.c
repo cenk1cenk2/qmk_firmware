@@ -79,7 +79,7 @@ void keyboard_post_init_user(void) {
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 
-#ifdef AUTO_SHIFT_TIMEOUT
+#ifdef AUTO_SHIFT_ENABLE
     switch (get_highest_layer(state)) {
         case _QWERTY:
         case _LOWER:
