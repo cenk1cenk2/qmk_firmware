@@ -34,7 +34,7 @@
 #    define SPLIT_OLED_ENABLE
 #endif
 
-#define RGB_DI_PIN D3
+#define WS2812_DI_PIN D3
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_SPLIT
