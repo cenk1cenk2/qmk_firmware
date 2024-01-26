@@ -13,7 +13,7 @@ OLED_ENABLE = yes
 ENCODER_ENABLE = yes
 NKRO_ENABLE = yes
 
-VIA_ENABLE = yes
+VIA_ENABLE = no
 
 SRC +=  ./oled.c \
         ./handler.c
