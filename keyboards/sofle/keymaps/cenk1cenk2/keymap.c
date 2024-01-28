@@ -23,7 +23,7 @@ KC_TRNS,            KC_BSLS,              KC_LBRC,              KC_RBRC,        
 KC_TRNS,            KC_NO,                KC_NO,                KC_NO,              KC_NO,               KC_NO,                                                         KC_NO,               KC_NO,              KC_NO,                KC_NO,              KC_NO,               KC_NO,
 KC_TRNS,            KC_F1,                KC_F2,                KC_F3,              KC_F4,               KC_F5,                                                         KC_F6,               LCTL(KC_LEFT),      KC_UP,                LCTL(KC_RIGHT),     KC_PGUP,             KC_DEL,
 KC_TRNS,            KC_F7,                KC_F8,                KC_F9,              KC_F10,              KC_F11,                                                        KC_F12,              KC_LEFT,            KC_DOWN,              KC_RGHT,            KC_PGDN,             KC_ENT,
-KC_TRNS,            KC_UNDO,              KC_CUT,               KC_COPY,            KC_PASTE,            KC_AGAIN,            KC_TRNS,             KC_TRNS,             KC_PSCR,             KC_HOME,            KC_NO,                KC_END,             KC_NO,               KC_NO,
+KC_TRNS,            KC_NO,                KC_NO,                KC_NO,              KC_NO,               KC_NO,               KC_TRNS,             KC_TRNS,             KC_PSCR,             KC_HOME,            KC_NO,                KC_END,             KC_NO,               KC_NO,
                     KC_TRNS,              KC_TRNS,              KC_TRNS,            KC_TRNS,             KC_TRNS,                                                       KC_TRNS,             KC_TRNS,            KC_TRNS,              KC_TRNS,            KC_TRNS
 ),
 [_ADJUST] = LAYOUT(
