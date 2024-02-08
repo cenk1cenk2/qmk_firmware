@@ -10,7 +10,7 @@ QK_GESC,            KC_1,                 KC_2,                 KC_3,           
 KC_TAB,             KC_Q,                 KC_W,                 KC_E,               KC_R,                KC_T,                                                          KC_Y,                KC_U,               KC_I,                 KC_O,               KC_P,               KC_BSPC,
 LCTL_T(KC_TAB),     KC_A,                 KC_S,                 KC_D,               KC_F,                KC_G,                                                          KC_H,                KC_J,               KC_K,                 KC_L,               KC_SCLN,            KC_QUOT,
 KC_LSFT,            KC_Z,                 KC_X,                 KC_C,               KC_V,                KC_B,                KC_MUTE,             RGB_TOG,             KC_N,                KC_M,               KC_COMM,              KC_DOT,             KC_SLSH,            KC_RSFT,
-                    KC_LGUI,              KC_LALT,              KC_LCTL,            MO(_LOWER),          KC_ENT,                                                        KC_SPC,              MO(_RAISE),         KC_RCTL,              KC_RALT,            KC_RGUI
+                    KC_LALT,              KC_LCTL,              KC_LGUI,            MO(_LOWER),          KC_ENT,                                                        KC_SPC,              MO(_RAISE),         KC_RALT,              KC_RCTL,            KC_RGUI
 ),
 [_LOWER]  = LAYOUT(
 KC_GRV,             KC_NO,                KC_NO,                KC_NO,              KC_NO,               KC_NO,                                                         KC_NO,               KC_NO,              KC_NO,                KC_NO,              KC_NO,              KC_NO,
