@@ -23,7 +23,7 @@
 #define NO_AUTO_SHIFT_NUMERIC
 
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 200
+// #define TAPPING_TERM 200
 
 #define FORCE_NKRO
 
