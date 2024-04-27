@@ -38,7 +38,7 @@
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_SPLIT
-#    define RGBLED_NUM 72 // Number of LEDs
+#    define RGBLIGHT_LED_COUNT 72 // Number of LEDs
 #    define RGBLED_SPLIT \
         { 36, 36 }
 #    define RGBLIGHT_DEFAULT_HUE 120
