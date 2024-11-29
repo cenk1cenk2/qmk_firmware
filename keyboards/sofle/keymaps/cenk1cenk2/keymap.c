@@ -50,25 +50,27 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             } else if (index == 1) {
                 if (clockwise) {
-                    tap_code(KC_PGDN);
+                    tap_code(MS_WHLU);
                 } else {
-                    tap_code(KC_PGUP);
+                    tap_code(MS_WHLD);
                 }
             }
             break;
         case _RAISE:
-        case _LOWER:
             if (index == 0) {
                 if (clockwise) {
                     tap_code(KC_MNXT);
                 } else {
                     tap_code(KC_MPRV);
                 }
-            } else if (index == 1) {
+            }
+            break;
+        case _LOWER:
+            if (index == 1) {
                 if (clockwise) {
-                    tap_code(KC_MS_WH_RIGHT);
+                    tap_code(MS_WHLR);
                 } else {
-                    tap_code(KC_MS_WH_LEFT);
+                    tap_code(MS_WHLL);
                 }
             }
             break;

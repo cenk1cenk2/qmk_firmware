@@ -19,7 +19,7 @@ void suspend_wakeup_init_user(void) {
 
 void suspend_power_down_user(void) {
 #ifdef RGBLIGHT_ENABLE
-    rgblight_disable_noeeprom();
+    // rgblight_disable_noeeprom();
 #endif
 #ifdef OLED_ENABLE
     oled_clear();
@@ -37,7 +37,7 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
     switch (m2s->power) {
         case true:
 #ifdef RGBLIGHT_ENABLE
-            rgblight_enable_noeeprom();
+            // rgblight_enable_noeeprom();
 #endif
 #ifdef OLED_ENABLE
             oled_set_brightness(255);
@@ -46,7 +46,7 @@ void user_sync_sleep_state_slave_handler(uint8_t in_buflen, const void *in_data,
             break;
         case false:
 #ifdef RGBLIGHT_ENABLE
-            rgblight_disable_noeeprom();
+            // rgblight_disable_noeeprom();
 #endif
 #ifdef OLED_ENABLE
             oled_set_brightness(0);
