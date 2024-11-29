@@ -50,9 +50,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
             } else if (index == 1) {
                 if (clockwise) {
-                    tap_code(MS_WHLU);
-                } else {
                     tap_code(MS_WHLD);
+                } else {
+                    tap_code(MS_WHLU);
                 }
             }
             break;
